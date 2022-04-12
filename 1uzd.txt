@@ -1,0 +1,35 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+int main()
+{
+    double hours, minutes;
+    cout <<  "Inpute hours: ";
+    cin >> hours;
+    cout << "Input minutes: ";
+    cin>> minutes;
+    if (hours > 24 )
+    {
+        cout << "Wrong hours input" << endl;
+        return 0;
+    }
+    else if (minutes > 60)
+    {
+        cout << "Wrong minutes input" << endl;
+        return 0;
+    }
+    if (hours > 12)
+    {
+        hours = hours - 12;
+    }
+    //every 60 minutes minute arrow moves 360 degrees 360/60=6 degrees per minute
+    //every 12 hours hour arrow moves 360 degrees 360/12=30 degrees per hour but we also need to keep in mind that hour arrow turns every minute so 360/720=0.5 degrees per minute
+    int minute_arrow = 6 * minutes;
+    double hour_arrow = 0.5 * (hours * 60. + minutes);
+    double result =abs( hour_arrow - minute_arrow);//since minute arrow can be higher then hour arrow and my result will be negative
+    if (360 - result < result)
+        cout << 360 - result << endl;
+    else
+        cout << result << endl;
+    return 0;
+}
